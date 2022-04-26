@@ -1,4 +1,4 @@
-name: Docker Image CI
+[14:32, 26/04/2022] Anita: name: Docker Image CI
 
 on:
   push:
@@ -14,20 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: doker login
+    - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER-PASSWORD}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag tugbaheg/image1:latest
-      
-    - name : Docker Push
+    - name: Docker Push 
       run: docker push tugbaheg/image1
-      
-      
-      
-      
-      
